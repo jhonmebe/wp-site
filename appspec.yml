@@ -1,0 +1,17 @@
+version: 1.0
+os: linux
+files:
+   - source: /jhonemesablog
+     destination: /application/apache_home/
+permissions:
+   - object: /application/apache_home/
+     pattern: "**"
+     owner: www-data
+     group: www-data
+     mode: 659
+     type:
+       - directory
+hooks:
+   AfterInstall:
+    - location: scripts/restartapache.sh
+      runas: root
